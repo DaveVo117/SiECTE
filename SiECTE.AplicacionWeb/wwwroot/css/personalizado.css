@@ -1,0 +1,79 @@
+﻿fieldset.scheduler-border {
+  border: 1px solid #ddd !important;
+  padding: 0 1.4em 1em 1.4em !important;
+  margin: 0 0 1.5em 0 !important;
+  -webkit-box-shadow: 0px 0px 0px 0px #000;
+  box-shadow: 0px 0px 0px 0px #000;
+  margin-top: 50px !important;
+  border-radius: 10px;
+}
+
+legend.scheduler-border {
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+  text-align: left !important;
+  width: auto;
+  padding: 0 10px;
+  border-bottom: none;
+  margin-top: -15px;
+  background-color: #ffffff;
+  color: darkslategray;
+  border-radius: 10px;
+}
+
+/*
+<div class="container">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Technical Ameen</legend>
+        <h2>Your Work Here</h2>
+        <p>Your Work Here</p>
+    </fieldset>
+</div>
+*/
+
+/*Boton rosa - inicio*/
+.btn-rosa {
+  color: #fff;
+  background-color: #e094a1;
+  border-color: #e094a1;
+}
+
+.btn-rosa:hover {
+  color: #fff;
+  background-color: #c47c88;
+  border-color: #c47c88;
+}
+
+.btn-check:focus + .btn-rosa,
+.btn-rosa:focus {
+  color: #fff;
+  background-color: #c47c88;
+  border-color: #c47c88;
+  box-shadow: 0 0 0 0.25rem rgba(253, 49, 209, 0.5);
+}
+
+.btn-check:active + .btn-rosa,
+.btn-check:checked + .btn-rosa,
+.btn-rosa.active,
+.btn-rosa:active,
+.show > .btn-rosa.dropdown-toggle {
+  color: #fff;
+  background-color: #c47c88;
+  border-color: #c47c88;
+}
+
+.btn-check:active + .btn-rosa:focus,
+.btn-check:checked + .btn-rosa:focus,
+.btn-rosa.active:focus,
+.btn-rosa:active:focus,
+.show > .btn-rosa.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(253, 49, 209, 0.5);
+}
+
+.btn-rosa.disabled,
+.btn-rosa:disabled {
+  color: #fff;
+  background-color: #e094a1;
+  border-color: #e094a1;
+}
+/*Boton rosa - fin*/
