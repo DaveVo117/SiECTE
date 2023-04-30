@@ -9,7 +9,7 @@
 
 <div class="card shadow mb-4" id="CardPrincipal">
         <div class="card-header py-3 bg-second-primary">
-        <h6 class="m-0 font-weight-bold text-white"><i class="fa fa-house-user"  aria-hidden="true"></i>&ensp;Datos del Organismo</h6>
+        <h6 class="m-0 font-weight-bold text-white"><i class="fa fa-hands"  aria-hidden="true"></i>&ensp;Datos del Organismo</h6>
         </div>
         <div class="card-body">
 
@@ -56,11 +56,19 @@
                                     </div>
                                 </div>
                             <div class="form-row">
-                                    <div class="form-group col-sm-">
-                                        <label for="txtLogo">Logo</label>
-                                        <input class="form-control-file" type="file" id="txtLogo" />
-                                    </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="cboEstado">Estatus</label>
+                                    <select class="form-control form-control-sm" id="cboEstado">
+                                        <option value="1">Activo</option>
+                                        <option value="0">No Activo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-">
+                                    <label for="txtLogo">Logo</label>
+                                    <input class="form-control-file" type="file" id="txtLogo" />
+                                </div>
                             </div>
+
                             </div>
 
                         <div class="col-sm-4">
@@ -124,7 +132,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h6>Detalle Usuario</h6>
+                <h6>Detalle Organismo</h6>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -168,8 +176,8 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-sm-6">
-                                    <label for="cboEstado">Estaus</label>
-                                    <select class="form-control form-control-sm" id="cboEstado">
+                                    <label for="cboEstadoModal">Estatus</label>
+                                    <select class="form-control form-control-sm" id="cboEstadoModal">
                                         <option value="1">Activo</option>
                                         <option value="0">No Activo</option>
                                     </select>
@@ -177,13 +185,13 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-sm-8">
-                                    <label for="txtLogo">Logo</label>
-                                    <input class="form-control-file" type="file" id="txtLogo" />
+                                    <label for="txtLogoModal">Logo</label>
+                                    <input class="form-control-file" type="file" id="txtLogoModal" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <img id="logoOrganismo" style="max-width:200px;" src="" class="rounded mx-auto d-block" alt="Logo Organismo">
+                            <img id="logoOrganismo" style="max-width:60%;" src="" class="rounded mx-auto d-block" alt="Logo Organismo">
                         </div>
                     </div>
                 </form>

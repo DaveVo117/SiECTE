@@ -158,6 +158,9 @@ namespace SiECTE.AplicacionWeb.Controllers
         }
 
 
+
+
+
         [HttpDelete]
         public async Task<IActionResult>Eliminar(int IdUsuario)
         {

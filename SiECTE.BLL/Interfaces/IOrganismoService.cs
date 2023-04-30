@@ -14,7 +14,12 @@ namespace SiECTE.BLL.Interfaces
 
         Task<List<Organismo>> ListaOrganismos();
 
+
+        Task<List<Organismo>> Crear(Organismo entidad, Stream foto = null, string nombreFoto = "");
+
         Task<Organismo> GuardarCambios(Organismo entidad, Stream Logo = null ,string NombreLogo="");
+
+        Task<bool> Eliminar(int idOrganismo);
 
 
 

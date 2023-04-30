@@ -21,6 +21,7 @@ namespace SiECTE.Entity
         public string? TxtTelefono { get; set; }
         public string? TxtTitular { get; set; }
         public string? TxtCargoTitular { get; set; }
+        public bool? SnActivo { get; set; }
 
         public virtual ICollection<CteCatUsuario> CteCatUsuarios { get; set; }
         public virtual ICollection<CteFichaIdentificacionResidente> CteFichaIdentificacionResidentes { get; set; }

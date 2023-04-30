@@ -52,20 +52,21 @@ namespace SiECTE.AplicacionWeb.Utilidades.Automapper
 
             #region Organismo
 
-            CreateMap<Organismo,VMOrganismo>().ReverseMap();
+            //CreateMap<Organismo,VMOrganismo>().ReverseMap();
 
-            //CreateMap<Organismo, VMOrganismo>()
-            //    .ForMember(destino =>
-            //    destino.PorcentajeImpuesto,
-            //    opt => opt.MapFrom(origen => Convert.ToString(origen.PorcentajeImpuesto.Value, new CultureInfo("es-MX")))
-            //    );
+            CreateMap<Organismo, VMOrganismo>()
+                .ForMember(destino =>
+                destino.SnActivo,
+              opt => opt.MapFrom(origen => origen.SnActivo == true ? 1 : 0)  //esta instruccion convierte el booleano a entero 1,0
+              );
 
-            ////mapeoInverso
-            //CreateMap<VMOrganismo, Organismo>()
-            //.ForMember(destino =>
-            //destino.PorcentajeImpuesto,
-            //opt => opt.MapFrom(origen => Convert.ToDecimal(origen.PorcentajeImpuesto, new CultureInfo("es-MX")))
-            //);
+
+            //mapeoInverso
+            CreateMap<VMOrganismo, Organismo>()
+            .ForMember(destino =>
+            destino.SnActivo,
+                opt => opt.MapFrom(origen => origen.SnActivo == 1 ? true : false)
+                );
 
             #endregion
 

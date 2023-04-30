@@ -7,6 +7,7 @@ using SiECTE.AplicacionWeb.Utilidades.Response;
 using SiECTE.BLL.Interfaces;
 using SiECTE.Entity;
 using Microsoft.AspNetCore.Authorization;
+using SiECTE.BLL.Implementacion;
 
 namespace SiECTE.AplicacionWeb.Controllers
 {
@@ -64,6 +65,49 @@ namespace SiECTE.AplicacionWeb.Controllers
 
 
 
+        [HttpPost]
+        public async Task<IActionResult> Crear([FromForm] IFormFile foto, [FromForm] string modelo)
+        {
+            //GenericResponse se utiliza en este método como un formato estándar par alas respuestas, se leerá con JavaScript
+            GenericResponse<VMOrganismo> genericResponse = new GenericResponse<VMOrganismo>();
+            try
+            {
+
+                VMOrganismo vmOrganismo = JsonConvert.DeserializeObject<VMOrganismo>(modelo);
+
+                string nombreFoto = "";
+                Stream fotoStream = null;
+
+                if (foto != null)
+                {
+                    string nombre_en_codigo = Guid.NewGuid().ToString("N");
+                    string extension = Path.GetExtension(foto.FileName);
+                    nombreFoto = string.Concat(nombre_en_codigo, extension);
+                    fotoStream = foto.OpenReadStream();
+                }
+
+                //string urlPlantillaCorreo = $"{this.Request.Scheme}://{this.Request.Host}/Plantilla/EnviarClave?correo=[correo]&clave=[clave]"; //en servicioUsuario método Crear() reemplaza las secciones entre corchetes
+
+                List<Organismo> organismo_creado = await _OrganismoService.Crear(_mapper.Map<Organismo>(vmOrganismo), fotoStream, nombreFoto);//el primer parámetro lo convertimos el tipo vmUsuario al tipo Usuario
+
+                vmOrganismo = _mapper.Map<VMOrganismo>(organismo_creado);
+
+                genericResponse.Estado = true;
+                genericResponse.Objeto = vmOrganismo;
+            }
+            catch (Exception ex)
+            {
+                genericResponse.Estado = false;
+                genericResponse.Mensaje = ex.Message;
+            }
+
+            return StatusCode(StatusCodes.Status200OK, genericResponse);
+
+        }
+
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> GuardarCambios([FromForm]IFormFile logo, [FromForm]string modelo)
@@ -106,6 +150,68 @@ namespace SiECTE.AplicacionWeb.Controllers
             return StatusCode(StatusCodes.Status200OK, genericResponse);
         }
 
+
+
+
+
+        [HttpPut]
+        public async Task<IActionResult> Editar([FromForm] IFormFile foto, [FromForm] string modelo)
+        {
+            //GenericResponse se utiliza en este método como un formato estándar par alas respuestas, se leerá con JavaScript
+            GenericResponse<VMOrganismo> genericResponse = new GenericResponse<VMOrganismo>();
+            try
+            {
+
+                VMOrganismo vmOrganismo = JsonConvert.DeserializeObject<VMOrganismo>(modelo);
+
+                string nombreFoto = "";
+                Stream fotoStream = null;
+
+                if (foto != null)
+                {
+                    string nombre_en_codigo = Guid.NewGuid().ToString("N");
+                    string extension = Path.GetExtension(foto.FileName);
+                    nombreFoto = string.Concat(nombre_en_codigo, extension);
+                    fotoStream = foto.OpenReadStream();
+                }
+
+                Organismo organismo_editado = await _OrganismoService.GuardarCambios(_mapper.Map<Organismo>(vmOrganismo), fotoStream, nombreFoto);//el primer parámetro lo convertimos el tipo vmUsuario al tipo Usuario
+
+                vmOrganismo = _mapper.Map<VMOrganismo>(organismo_editado);
+
+                genericResponse.Estado = true;
+                genericResponse.Objeto = vmOrganismo;
+            }
+            catch (Exception ex)
+            {
+                genericResponse.Estado = false;
+                genericResponse.Mensaje = ex.Message;
+            }
+
+            return StatusCode(StatusCodes.Status200OK, genericResponse);
+
+        }
+
+
+
+
+
+        [HttpDelete]
+        public async Task<IActionResult> Eliminar(int IdOrganismo)
+        {
+            GenericResponse<string> genericResponse = new GenericResponse<string>();
+            try
+            {
+                genericResponse.Estado = await _OrganismoService.Eliminar(IdOrganismo);
+            }
+            catch (Exception ex)
+            {
+                genericResponse.Estado = false;
+                genericResponse.Mensaje = ex.Message;
+            }
+
+            return StatusCode(StatusCodes.Status200OK, genericResponse);
+        }
 
 
 

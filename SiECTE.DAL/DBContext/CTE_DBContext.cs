@@ -749,6 +749,8 @@ namespace SiECTE.DAL.DBContext
                     .ValueGeneratedNever()
                     .HasColumnName("ID_Organismo");
 
+                entity.Property(e => e.SnActivo).HasColumnName("SN_Activo");
+
                 entity.Property(e => e.TxtCargoTitular)
                     .HasMaxLength(200)
                     .IsUnicode(false)

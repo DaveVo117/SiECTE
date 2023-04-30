@@ -12,6 +12,7 @@
         public string? TxtTelefono { get; set; }
         public string? TxtTitular { get; set; }
         public string? TxtCargoTitular { get; set; }
+        public int? SnActivo { get; set; }
 
     }
 }
