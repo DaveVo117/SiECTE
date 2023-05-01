@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Shared\Components\NewFolder\**" />
+    <Content Remove="Views\Shared\Components\NewFolder\**" />
+    <EmbeddedResource Remove="Views\Shared\Components\NewFolder\**" />
+    <None Remove="Views\Shared\Components\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SiECTE.BLL\SiECTE.BLL.csproj" />
     <ProjectReference Include="..\SiECTE.Entity\SiECTE.Entity.csproj" />
     <ProjectReference Include="..\SiECTE.IOC\SiECTE.IOC.csproj" />

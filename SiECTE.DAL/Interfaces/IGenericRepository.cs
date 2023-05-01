@@ -16,5 +16,6 @@ namespace SiECTE.DAL.Interfaces
         Task<bool> Editar(TEntity entidad);
         Task<bool> Eliminar(TEntity entidad);
         Task<IQueryable<TEntity>> Consultar(Expression<Func<TEntity, bool>> filtro=null);
+        Task<TEntity> ObtenerUsuario(Expression<Func<TEntity, bool>> filtro);
     }
 }

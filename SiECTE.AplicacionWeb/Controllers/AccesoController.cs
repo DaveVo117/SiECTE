@@ -52,6 +52,13 @@ namespace SiECTE.AplicacionWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(VMUsuarioLogin modelo)
         {
+
+            if (modelo.TxtCorreo ==null || modelo.TxtClave == null)
+            {
+                ViewData ["Mensaje"] = "Debe introducir sus credenciales";
+                return View();
+            }
+
             CteCatUsuario usuario_encontrado = await _usuarioService.ObtenerPorCredenciales(modelo.TxtCorreo, modelo.TxtClave);
 
             if (usuario_encontrado == null)
@@ -67,7 +74,9 @@ namespace SiECTE.AplicacionWeb.Controllers
                 new Claim(ClaimTypes.Name,usuario_encontrado.Nombre + " " + usuario_encontrado.PrimerApellido),
                 new Claim(ClaimTypes.NameIdentifier,usuario_encontrado.IdUsuario.ToString()),
                 new Claim(ClaimTypes.Role,usuario_encontrado.IdRol.ToString()),
-                new Claim("TxtUrlFoto",usuario_encontrado.TxtUrlFoto)
+                new Claim("TxtUrlFoto",usuario_encontrado.TxtUrlFoto),
+                new Claim("TxtSiglas", usuario_encontrado.IdOrganismoNavigation != null ? usuario_encontrado.IdOrganismoNavigation.TxtSiglas : "DIFH"),
+                new Claim("TxtOrganismo", usuario_encontrado.IdOrganismoNavigation != null ? usuario_encontrado.IdOrganismoNavigation.TxtNombre : "")
             };
 
             ClaimsIdentity claimsIdentity= new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

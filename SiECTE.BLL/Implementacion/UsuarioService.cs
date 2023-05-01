@@ -128,6 +128,7 @@ namespace SiECTE.BLL.Implementacion
             usuario_editar.TxtCorreo= entidad.TxtCorreo;
             usuario_editar.TxtTelefono= entidad.TxtTelefono;
             usuario_editar.IdRol= entidad.IdRol;
+            usuario_editar.IdOrganismo = entidad.IdOrganismo;
             usuario_editar.SnActivo= entidad.SnActivo;
 
             if (usuario_editar.TxtNombreFoto == "")
@@ -188,7 +189,7 @@ namespace SiECTE.BLL.Implementacion
         {
             string clave_encriptada = _utilidadesService.ConvertirSha256(clave);
 
-            CteCatUsuario usuario_encontrado = await _repositorio.Obtener(u=>u.TxtCorreo.Equals(correo) && u.PassUsuario.Equals(clave_encriptada));
+            CteCatUsuario usuario_encontrado = await _repositorio.ObtenerUsuario(u=>u.TxtCorreo.Equals(correo) && u.PassUsuario.Equals(clave_encriptada));
 
             return usuario_encontrado;
         }

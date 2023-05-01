@@ -65,7 +65,7 @@ namespace SiECTE.BLL.Implementacion
 
 
 
-        public async Task<List<Organismo>> Crear(Organismo entidad, Stream foto = null, string nombreFoto = "")
+        public async Task<Organismo> Crear(Organismo entidad, Stream foto = null, string nombreFoto = "")
         {
             Organismo organismo_existe = await _repositorio.Obtener(u => u.TxtNombre == entidad.TxtNombre);
             if (organismo_existe != null)
@@ -90,7 +90,7 @@ namespace SiECTE.BLL.Implementacion
                 IQueryable<Organismo> query = await _repositorio.Consultar();
                 
 
-                return query.ToList();
+                return query.FirstOrDefault();
 
             }
             catch (Exception ex)

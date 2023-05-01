@@ -20,6 +20,7 @@
                 $("#txtCorreo").val(d.txtCorreo)
                 $("#txtTelefono").val(d.txtTelefono)
                 $("#txtRol").val(d.txtRol)
+                $("#idOrganismo").val(d.idOrganismo)
 
 
             } else {

@@ -108,14 +108,14 @@
 </div>
 
 
-@*FICHA*@
+@*BUSQUEDA RESIDENTE*@
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-12">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 bg-second-primary">
-                        <h6 class="m-0 font-weight-bold text-white"><i class="fas fa-fw fa-house-user"></i>&ensp;Residente</h6>
+                            <h6 class="m-0 font-weight-bold text-white"><i class="fas fa-fw fa-house-user"></i>&ensp;Residente</h6>
                         </div>
                         <div class="card-body">
                             <div class="form-row">
@@ -141,20 +141,25 @@
                                         <tbody>
                                         </tbody>
                                     </table>
-                            <br />
-                            <div class="row" style="text-align:end">
-                                <div class="col-lg-12">
-                                    <button class="btn btn-success  " id="btnNuevoR"><i class="fas fa-plus-circle"></i> Nuevo Residente</button>
+                                    <br />
+                                    <div class="row" style="text-align:end">
+                                        <div class="col-lg-12">
+                                            <button class="btn btn-success  " id="btnNuevoR"><i class="fas fa-plus-circle"></i> Nuevo Residente</button>
+                                        </div>
+                                    </div>
                                 </div>
-                             </div>
-                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
 
+@*FICHA*@
+    <div class="row">
+        <div class="col-sm-8">
 <form>
         <div class="row">
             <div class="col-sm-12">
@@ -163,40 +168,63 @@
                         <h6 class="m-0 font-weight-bold text-white"><i class="fa fa-info" aria-hidden="true"></i>&ensp;Ficha de Identificación</h6>
                     </div>
                     <div class="card-body">
-                            <div class="form-row" style="justify-content:space-evenly;">
+                            <div class="form-row" style="justify-content:space-between;">
                                 <div class="form-group col-sm-3">
                                     <img id="imgFoto" src="https://images.unsplash.com/photo-1519648023493-d82b5f8d7b8a?w=300" class="rounded mx-auto d-block" style="width: 200px; height: 200px;">
                                 </div>
                                 <div class="form-group col-sm-3">
-                                    <span> </span>
+                                    <span>@*ViewData["IdBeneficiario"]*@Beneficiario No.<h3> 892</h3> </span>
                                 </div>
                                 <div class="form-group col-sm-3">
                                     <span>@*ViewData["Idresidente"]*@Ficha:<h3> 00456</h3></span>
                                 </div>
                             </div>
+                            <br />
                         <div class="form-row">
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputNombre">Nombre:</span>
-                                </div>
-                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupNombrel" id="txtNombrel">
-                                <a>&ensp;</a>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupPrimerApellidoR">Primer Apellido:</span>
-                                </div>
-                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupPrimerApellidoR" id="txtPrimerApellidoR">
-                                <a>&ensp;</a>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupSegundoApellidoR">Segundo Apellido:</span>
-                                </div>
-                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupSegundoApellidoR" id="txtSegundoApellidoR">
+                                    <div class="form-group col-sm-4">
+                                <label for="txtNombreFicha">Nombre(s)</label>
+                                <input type="text" class="form-control form-control-sm input-validar" id="txtNombreFicha" name="NombreFicha">
+                            </div>
+                             <div class="form-group col-sm-4">
+                                    <label for="txtPrimerApellidoFicha">Primer Apellido</label>
+                                    <input type="text" class="form-control form-control-sm input-validar" id="txtPrimerApellidoFicha" name="PrimerApellidoFicha">
+                             </div>
+                             <div class="form-group col-sm-4">
+                                 <label for="txtSegundoApellidoFicha">Primer Apellido</label>
+                                 <input type="text" class="form-control form-control-sm input-validar" id="txtSegundoApellidoFicha" name="SegundoApellidoFicha">
+                             </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label for="txtFechaIngreso">Fecha Ingreso</label>
+                                <input type="text" class="form-control form-control-sm input-validar" id="txtFechaIngreso" name="FechaIngreso">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="txtUltimaCuota">Ultima Cuota</label>
+                                        <input type="text" class="form-control form-control-sm input-validar" id="txtUltimaCuota" name="UltimaCuota">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="txtReligion">Religion</label>
+                                <input type="text" class="form-control form-control-sm input-validar" id="txtReligion" name="Religion">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-
-                                <br />
-
+                        <div class="form-row">
+                            <div class="form-group col-sm-8">
+                                <label for="txtDependencia">Dependencia que lo emite</label>
+                                <input type="text" class="form-control form-control-sm input-validar" id="txtDependencia" name="Dependencia">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="cboEstadoFicha">Estado</label>
+                                    <select class="form-control form-control-sm" id="cboEstadoFicha">
+                                    <option value="1">Activo</option>
+                                    <option value="0">No Activo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-12">
+                                <label for="txtFoto">Foto</label>
+                                <input class="form-control-file" type="file" id="txtFoto" />
                             </div>
                         </div>
                     </div>
@@ -205,8 +233,7 @@
         </div>
 </form>
 
-
-        </div>
+</div>
 
         @*RESPONSABLE*@
         <div class="col-sm-4">
@@ -217,93 +244,209 @@
                         <div class="card-header py-3 bg-second-primary">
                         <h6 class="m-0 font-weight-bold text-white"><i class="fa fa-phone" aria-hidden="true"></i>&ensp;Responsable</h6>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="padding:.5rem">
 
                         <div id="tabs">
                             <ul>
-                                <li><a href="#fragment-1">1</a></li>
-                                <li><a href="#fragment-2">2</a></li>
-                                <li><a href="#fragment-3">3</a></li>
+                                <li><a href="#Responsable1">1</a></li>
+                                <li><a href="#Responsable2">2</a></li>
+                                <li><a href="#Responsable3">3</a></li>
                             </ul>
-                            <div id="fragment-1">
-                                Principal
+                            <div id="Responsable1" style="padding:.3rem">
+                                    <p class="text-gray-500">Principal</p>
+
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputNombreR1">Nombre:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupNombreR1" id="txtNombreR1">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupPrimerApellidoR1">Primer Apellido:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupPrimerApellidoR1" id="txtPrimerApellidoR1">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupSegundoApellidoR1">Segundo Apellido:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupSegundoApellidoR1" id="txtSegundoApellidoR1">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupDomicilioR1">Domicilio:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupDomicilioR1" id="txtDomicilioR1">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupTelefonoR1">Tel:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupTelefonoR1" id="txtTelefonoR1">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupEmailR1">eMail:</span>
+                                        </div>
+                                        <input style="width:110px" type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupEmailR1" id="txtEmailR1">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="cboTipoIdentificacionR1">Tipo Identificación:</label>
+                                        </div>
+                                        <select class="custom-select" id="cboTipoIdentificacionR1">
+                                        </select>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupNoIdentificacionR1">No. Identificacion:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupNoIdentificacionR1" id="txtNoIdentificacionR1">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupParentescoR1">Parentesco:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupParentescoR1" id="txtParentescoR1">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <select class="form-control form-control-sm" id="cboEstadoR1">
+                                            <option value="1">Activo</option>
+                                            <option value="0">No Activo</option>
+                                        </select>
+                                    </div>
                             </div>
-                            <div id="fragment-2">
+                                <div id="Responsable2" style="padding:.3rem">
+
+                                     <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputNombreR2">Nombre:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupNombreR2" id="txtNombreR2">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupPrimerApellidoR2">Primer Apellido:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupPrimerApellidoR2" id="txtPrimerApellidoR2">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupSegundoApellidoR2">Segundo Apellido:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupSegundoApellidoR2" id="txtSegundoApellidoR2">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupDomicilioR2">Domicilio:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupDomicilioR2" id="txtDomicilioR2">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupTelefonoR2">Tel:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupTelefonoR2" id="txtTelefonoR2">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupEmailR2">eMail:</span>
+                                        </div>
+                                        <input style="width:110px" type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupEmailR2" id="txtEmailR2">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="cboTipoIdentificacionR2">Tipo Identificación:</label>
+                                        </div>
+                                        <select class="custom-select" id="cboTipoIdentificacionR2">
+                                        </select>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupNoIdentificacionR2">No. Identificacion:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupNoIdentificacionR2" id="txtNoIdentificacionR2">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupParentescoR2">Parentesco:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupParentescoR2" id="txtParentescoR2">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <select class="form-control form-control-sm" id="cboEstadoR2">
+                                            <option value="1">Activo</option>
+                                            <option value="0">No Activo</option>
+                                        </select>
+                                    </div>
 
                             </div>
-                            <div id="fragment-3">
+                                <div id="Responsable3" style="padding:.3rem">
+
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputNombreR3">Nombre:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupNombreR3" id="txtNombreR3">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupPrimerApellidoR3">Primer Apellido:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupPrimerApellidoR3" id="txtPrimerApellidoR3">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupSegundoApellidoR3">Segundo Apellido:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupSegundoApellidoR3" id="txtSegundoApellidoR3">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupDomicilioR3">Domicilio:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupDomicilioR3" id="txtDomicilioR3">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupTelefonoR3">Tel:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupTelefonoR3" id="txtTelefonoR3">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupEmailR3">eMail:</span>
+                                        </div>
+                                        <input style="width:110px" type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupEmailR3" id="txtEmailR3">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="cboTipoIdentificacionR3">Tipo Identificación:</label>
+                                        </div>
+                                        <select class="custom-select" id="cboTipoIdentificacionR3">
+                                        </select>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupNoIdentificacionR3">No. Identificacion:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupNoIdentificacionR3" id="txtNoIdentificacionR3">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupParentescoR3">Parentesco:</span>
+                                        </div>
+                                        <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupParentescoR3" id="txtParentescoR3">
+                                    </div>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <select class="form-control form-control-sm" id="cboEstadoR3">
+                                            <option value="1">Activo</option>
+                                            <option value="0">No Activo</option>
+                                        </select>
+                                    </div>
                                 
                             </div>
-
-
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputNombre">Nombre:</span>
-                                </div>
-                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupNombrel" id="txtNombrel" >
-                            </div>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupPrimerApellido">Primer Apellido:</span>
-                                </div>
-                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupPrimerApellido" id="txtPrimerApellido" >
-                            </div>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupSegundoApellido">Segundo Apellido:</span>
-                                </div>
-                            <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupSegundoApellidol" id="txtSegundoApellido" >
-                            </div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupDomicilio">Domicilio:</span>
-                                    </div>
-                                    <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupDomicilio" id="txtDomicilio" >
-                                </div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupTelefono">Tel:</span>
-                                    </div>
-                                    <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupTelefono" id="txtTelefono">
-                            <div>&ensp;</div>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupEmail">eMail:</span>
-                                    </div>
-                                    <input style="width:110px" type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupEmail" id="txtEmail">
-                                </div>
-                             <div class="input-group input-group-sm mb-3">
-                                 <div class="input-group-prepend">
-                                     <label class="input-group-text" for="cboTipoIdentificacion">Tipo Identificación:</label>
-                                 </div>
-                                 <select class="custom-select" id="cboTipoIdentificacion">
-
-                                 </select>
-                             </div>
-                             <div class="input-group input-group-sm mb-3">
-                                 <div class="input-group-prepend">
-                                     <span class="input-group-text" id="inputGroupNoIdentificacion">No. Identificacion:</span>
-                                 </div>
-                                 <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupNoIdentificacion" id="txtNoIdentificacion">
-                             </div>
-                             <div class="input-group input-group-sm mb-3">
-                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupParentesco">Parentesco:</span>
-                                 </div>
-                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupParentesco" id="txtParentesco">
-                            </div>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupParentesco">Parentesco:</span>
-                                </div>
-                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupParentesco" id="txtParentesco">
-                            </div>
-                            <div class="input-group input-group-sm mb-3">
-                                <select class="form-control form-control-sm" id="cboEstado">
-                                    <option value="1">Activo</option>
-                                    <option value="0">No Activo</option>
-                                </select>
-                            </div>
-
                         </div>
 
                     </div>
@@ -345,5 +488,5 @@
     <script src="~/js/vistas/Nuevo_Ingreso.js"></script>
     <script src="~/vendor/jquery-ui/idioma/datepicker-es.js"></script>
     <link href="~/css/personalizado.css" rel="stylesheet">
-
+    
 }

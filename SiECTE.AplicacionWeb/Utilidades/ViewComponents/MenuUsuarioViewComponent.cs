@@ -15,6 +15,7 @@ namespace SiECTE.AplicacionWeb.Utilidades.ViewComponents
             string nombreUsuario = "";
             string urlFotoUsuario = "";
 
+
             if (claimUser.Identity.IsAuthenticated)
             {
                 nombreUsuario = claimUser.Claims
@@ -27,6 +28,7 @@ namespace SiECTE.AplicacionWeb.Utilidades.ViewComponents
 
                 ViewData ["nombreUsuario"] = nombreUsuario;
                 ViewData ["urlFotoUsuario"] = urlFotoUsuario;
+
 
                 return View();
 

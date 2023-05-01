@@ -20,10 +20,10 @@ namespace SiECTE.DAL.DBContext
         public virtual DbSet<Configuracion> Configuracion { get; set; } = null!;
         public virtual DbSet<CteCatArea> CteCatArea { get; set; } = null!;
         public virtual DbSet<CteCatDocumentoIngreso> CteCatDocumentoIngreso { get; set; } = null!;
-        public virtual DbSet<CteCatEstatus> CteCatEstatus { get; set; } = null!;
+        public virtual DbSet<CteCatEstatus> CteCatEstatuse { get; set; } = null!;
         public virtual DbSet<CteCatIdentificacionResidente> CteCatIdentificacionResidente { get; set; } = null!;
         public virtual DbSet<CteCatPension> CteCatPension { get; set; } = null!;
-        public virtual DbSet<CteCatRol> CteCatRol { get; set; } = null!;
+        public virtual DbSet<CteCatRol> CteCatRols { get; set; } = null!;
         public virtual DbSet<CteCatServicioSalud> CteCatServicioSalud { get; set; } = null!;
         public virtual DbSet<CteCatTipoNota> CteCatTipoNota { get; set; } = null!;
         public virtual DbSet<CteCatUsuario> CteCatUsuario { get; set; } = null!;
@@ -33,9 +33,9 @@ namespace SiECTE.DAL.DBContext
         public virtual DbSet<CteCtrlResponsableResidente> CteCtrlResponsableResidente { get; set; } = null!;
         public virtual DbSet<CteFichaIdentificacionResidente> CteFichaIdentificacionResidente { get; set; } = null!;
         public virtual DbSet<CteHistorialIngresoResidente> CteHistorialIngresoResidente { get; set; } = null!;
-        public virtual DbSet<Menu> Menu { get; set; } = null!;
-        public virtual DbSet<Organismo> Organismo { get; set; } = null!;
-        public virtual DbSet<RolMenu> RolMenu { get; set; } = null!;
+        public virtual DbSet<Menu> Menus { get; set; } = null!;
+        public virtual DbSet<Organismo> Organismos { get; set; } = null!;
+        public virtual DbSet<RolMenu> RolMenus { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -745,9 +745,7 @@ namespace SiECTE.DAL.DBContext
 
                 entity.ToTable("Organismo");
 
-                entity.Property(e => e.IdOrganismo)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID_Organismo");
+                entity.Property(e => e.IdOrganismo).HasColumnName("ID_Organismo");
 
                 entity.Property(e => e.SnActivo).HasColumnName("SN_Activo");
 

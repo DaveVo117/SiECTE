@@ -79,11 +79,35 @@ namespace SiECTE.DAL.Implementacion
                 throw;
             }
         }
+
+
+
+
         public async Task<IQueryable<TEntity>> Consultar(Expression<Func<TEntity, bool>> filtro = null)
         {
           IQueryable<TEntity>queryEntidad = filtro ==null? _dbContext.Set<TEntity>():_dbContext.Set<TEntity>().Where(filtro);
             return queryEntidad;
         }
+
+
+
+
+
+        public async Task<TEntity> ObtenerUsuario(Expression<Func<TEntity, bool>> filtro)
+        {
+            try
+            {
+                TEntity entidad = await _dbContext.Set<TEntity>()
+                    .Include("IdOrganismoNavigation") // incluye la tabla relacionada IdOrganismoNavigation
+                    .FirstOrDefaultAsync(filtro);
+                return entidad;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
 
 

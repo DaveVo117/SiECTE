@@ -88,7 +88,7 @@ namespace SiECTE.AplicacionWeb.Controllers
 
                 //string urlPlantillaCorreo = $"{this.Request.Scheme}://{this.Request.Host}/Plantilla/EnviarClave?correo=[correo]&clave=[clave]"; //en servicioUsuario método Crear() reemplaza las secciones entre corchetes
 
-                List<Organismo> organismo_creado = await _OrganismoService.Crear(_mapper.Map<Organismo>(vmOrganismo), fotoStream, nombreFoto);//el primer parámetro lo convertimos el tipo vmUsuario al tipo Usuario
+                Organismo organismo_creado = await _OrganismoService.Crear(_mapper.Map<Organismo>(vmOrganismo), fotoStream, nombreFoto);//el primer parámetro lo convertimos el tipo vmUsuario al tipo Usuario
 
                 vmOrganismo = _mapper.Map<VMOrganismo>(organismo_creado);
 

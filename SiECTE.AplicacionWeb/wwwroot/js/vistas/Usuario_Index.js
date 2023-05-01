@@ -12,6 +12,7 @@
     idRol: 0,
     idOrganismo: 0,
     snActivo: 1,
+    fechaAlta:"",
     txtUrlFoto: ""
 
 }//Utilizar inicial minuscula
@@ -211,6 +212,8 @@ $("#btnGuardar").click(function () {
         return;
     }
 
+    var fecha = new Date();
+
     const modelo = structuredClone(MODELO_BASE);
     modelo["idUsuario"] = parseInt($("#txtId").val())
     modelo["nombreCompleto"] = $("#txtNombre").val() + " " + $("#txtPrimerApellido").val() + " " + $("#txtSegundoApellido").val();
@@ -218,13 +221,14 @@ $("#btnGuardar").click(function () {
     modelo["nombre"] = $("#txtNombre").val()
     modelo["primerApellido"] = $("#txtPrimerApellido").val()
     modelo["segundoApellido"] = $("#txtSegundoApellido").val()
-    modelo["TxtCorreo"] = $("#txtCorreo").val()
+    modelo["txtCorreo"] = $("#txtCorreo").val()
     modelo["txtTelefono"] = $("#txtTelefono").val()
     modelo["idRol"] = $("#cboRol").val()
     modelo["idOrganismo"] = $("#cboOrganismo").val()
     modelo["cargo"] = $("#txtCargo").val()
     modelo["noEmpleado"] = $("#txtNoEmpleado").val()
     modelo["snActivo"] = $("#cboEstado").val()
+    modelo["fechaAlta"] = fecha.getFullYear() + '-' + (fecha.getMonth() + 1).toString().padStart(2, '0') + '-' + fecha.getDate().toString().padStart(2, '0');
 
     const inputFoto = document.getElementById("txtFoto")
 
