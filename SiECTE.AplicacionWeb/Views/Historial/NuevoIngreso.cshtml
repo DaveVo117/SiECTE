@@ -12,6 +12,8 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
     <script src="~/vendor/jquery/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 
     <script>
         $(function () {
@@ -170,7 +172,7 @@
                     <div class="card-body">
                             <div class="form-row" style="justify-content:space-between;">
                                 <div class="form-group col-sm-3">
-                                    <img id="imgFoto" src="https://images.unsplash.com/photo-1519648023493-d82b5f8d7b8a?w=300" class="rounded mx-auto d-block" style="width: 200px; height: 200px;">
+                                        <img id="imgFoto" src="https://th.bing.com/th/id/R.e508494d1dfae22679ae4a0e8cd772fd?rik=z4sDaLkgMKL%2b3A&pid=ImgRaw&r=300" class="rounded mx-auto d-block" style="width: 200px; height: 200px;">
                                 </div>
                                 <div class="form-group col-sm-3">
                                     <span>@*ViewData["IdBeneficiario"]*@Beneficiario No.<h3> 892</h3> </span>
@@ -454,6 +456,21 @@
             </div>
             </div>
 
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 bg-second-primary">
+                        <h6 class="m-0 font-weight-bold text-white"><i class="fa fa-file" aria-hidden="true"></i>&ensp;Documentos Ingreso</h6>
+                        </div>
+                        <div class="card-body" style="padding:.5rem">
+
+                            <div id="checkbox-container"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="row">
                 <div class="col-sm-12">
@@ -466,6 +483,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

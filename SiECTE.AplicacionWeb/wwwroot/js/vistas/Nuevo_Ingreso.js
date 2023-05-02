@@ -7,9 +7,22 @@ $(document).ready(function () {
 
     $("#txtFechaIngreso").datepicker({ dateFormat: "dd/mm/yy" })
 
-    //$("#txtFechaInicio").val(new Date(new Date().getFullYear(), new Date().getMonth(), 1).toLocaleDateString());
-    //$("#txtFechaFin").val(new Date().toLocaleDateString());
-    /*   $("#txtFechaFin").datepicker({ dateFormat: "dd/mm/yy" })*/
+    fetch('/Residente/ObtenerDocumentos')
+        .then(response => response.json())
+        .then(data => {
+            const checkboxContainer = document.getElementById('checkbox-container');
+            data.forEach(item => {
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = item.txtDocumentoIngreso; // aquí puedes poner el nombre del item como quieras
+                checkbox.value = item.valor; // aquí puedes poner el valor del item como quieras
+                checkboxContainer.appendChild(checkbox);
+
+                const label = document.createElement('label');
+                label.textContent = item.txtDocumentoIngreso; // aquí puedes poner el nombre del item como quieras
+                checkboxContainer.appendChild(label);
+            });
+        });
 
 })
 

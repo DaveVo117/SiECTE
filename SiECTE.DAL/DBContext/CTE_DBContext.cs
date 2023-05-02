@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+
 using SiECTE.Entity;
 
 namespace SiECTE.DAL.DBContext
@@ -33,9 +34,9 @@ namespace SiECTE.DAL.DBContext
         public virtual DbSet<CteCtrlResponsableResidente> CteCtrlResponsableResidente { get; set; } = null!;
         public virtual DbSet<CteFichaIdentificacionResidente> CteFichaIdentificacionResidente { get; set; } = null!;
         public virtual DbSet<CteHistorialIngresoResidente> CteHistorialIngresoResidente { get; set; } = null!;
-        public virtual DbSet<Menu> Menus { get; set; } = null!;
-        public virtual DbSet<Organismo> Organismos { get; set; } = null!;
-        public virtual DbSet<RolMenu> RolMenus { get; set; } = null!;
+        public virtual DbSet<Menu> Menu { get; set; } = null!;
+        public virtual DbSet<Organismo> Organismo { get; set; } = null!;
+        public virtual DbSet<RolMenu> RolMenu { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -84,12 +85,19 @@ namespace SiECTE.DAL.DBContext
 
                 entity.Property(e => e.IdAreaDependenciaDirecta).HasColumnName("ID_Area_Dependencia_Directa");
 
+                entity.Property(e => e.IdOrganismo).HasColumnName("ID_Organismo");
+
                 entity.Property(e => e.TxtArea)
                     .HasMaxLength(200)
                     .IsUnicode(false)
                     .HasColumnName("Txt_Area");
 
                 entity.Property(e => e.UsuarioActualiza).HasColumnName("Usuario_Actualiza");
+
+                entity.HasOne(d => d.IdOrganismoNavigation)
+                    .WithMany(p => p.CteCatAreas)
+                    .HasForeignKey(d => d.IdOrganismo)
+                    .HasConstraintName("FK_CTE_Cat_Area_Organismo");
 
                 entity.HasOne(d => d.UsuarioActualizaNavigation)
                     .WithMany(p => p.CteCatAreas)
@@ -109,6 +117,8 @@ namespace SiECTE.DAL.DBContext
                     .HasColumnType("datetime")
                     .HasColumnName("Fecha_Actualiza");
 
+                entity.Property(e => e.IdOrganismo).HasColumnName("ID_Organismo");
+
                 entity.Property(e => e.SnActivo).HasColumnName("SN_Activo");
 
                 entity.Property(e => e.TxtDescripcion)
@@ -121,6 +131,11 @@ namespace SiECTE.DAL.DBContext
                     .HasColumnName("Txt_DocumentoIngreso");
 
                 entity.Property(e => e.UsuarioActualiza).HasColumnName("Usuario_Actualiza");
+
+                entity.HasOne(d => d.IdOrganismoNavigation)
+                    .WithMany(p => p.CteCatDocumentoIngresos)
+                    .HasForeignKey(d => d.IdOrganismo)
+                    .HasConstraintName("FK_CTE_Cat_DocumentoIngreso_Organismo");
 
                 entity.HasOne(d => d.UsuarioActualizaNavigation)
                     .WithMany(p => p.CteCatDocumentoIngresos)
@@ -170,12 +185,19 @@ namespace SiECTE.DAL.DBContext
                     .HasColumnType("datetime")
                     .HasColumnName("Fecha_Actualiza");
 
+                entity.Property(e => e.IdOrganismo).HasColumnName("ID_Organismo");
+
                 entity.Property(e => e.TxtIdentificacion)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("Txt_Identificacion");
 
                 entity.Property(e => e.UsuarioActualiza).HasColumnName("Usuario_Actualiza");
+
+                entity.HasOne(d => d.IdOrganismoNavigation)
+                    .WithMany(p => p.CteCatIdentificacionResidentes)
+                    .HasForeignKey(d => d.IdOrganismo)
+                    .HasConstraintName("FK_CTE_Cat_Identificacion_Residente_Organismo");
 
                 entity.HasOne(d => d.UsuarioActualizaNavigation)
                     .WithMany(p => p.CteCatIdentificacionResidentes)
@@ -263,6 +285,8 @@ namespace SiECTE.DAL.DBContext
                     .ValueGeneratedNever()
                     .HasColumnName("ID_Tipo_Nota");
 
+                entity.Property(e => e.IdOrganismo).HasColumnName("ID_Organismo");
+
                 entity.Property(e => e.TxtDescripcion)
                     .IsUnicode(false)
                     .HasColumnName("Txt_Descripcion");
@@ -271,6 +295,11 @@ namespace SiECTE.DAL.DBContext
                     .HasMaxLength(500)
                     .IsUnicode(false)
                     .HasColumnName("Txt_TipoNota");
+
+                entity.HasOne(d => d.IdOrganismoNavigation)
+                    .WithMany(p => p.CteCatTipoNota)
+                    .HasForeignKey(d => d.IdOrganismo)
+                    .HasConstraintName("FK_CTE_Cat_TipoNota_Organismo");
             });
 
             modelBuilder.Entity<CteCatUsuario>(entity =>
@@ -638,6 +667,8 @@ namespace SiECTE.DAL.DBContext
                     .HasColumnName("Ultima_Cuota");
 
                 entity.Property(e => e.UsuarioActualiza).HasColumnName("Usuario_Actualiza");
+
+                entity.Property(e => e.UsuarioIngreso).HasColumnName("Usuario_Ingreso");
 
                 entity.HasOne(d => d.IdEstatusNavigation)
                     .WithMany(p => p.CteFichaIdentificacionResidentes)

@@ -7,6 +7,10 @@ namespace SiECTE.Entity
     {
         public Organismo()
         {
+            CteCatAreas = new HashSet<CteCatArea>();
+            CteCatDocumentoIngresos = new HashSet<CteCatDocumentoIngreso>();
+            CteCatIdentificacionResidentes = new HashSet<CteCatIdentificacionResidente>();
+            CteCatTipoNota = new HashSet<CteCatTipoNota>();
             CteCatUsuarios = new HashSet<CteCatUsuario>();
             CteFichaIdentificacionResidentes = new HashSet<CteFichaIdentificacionResidente>();
         }
@@ -23,6 +27,10 @@ namespace SiECTE.Entity
         public string? TxtCargoTitular { get; set; }
         public bool? SnActivo { get; set; }
 
+        public virtual ICollection<CteCatArea> CteCatAreas { get; set; }
+        public virtual ICollection<CteCatDocumentoIngreso> CteCatDocumentoIngresos { get; set; }
+        public virtual ICollection<CteCatIdentificacionResidente> CteCatIdentificacionResidentes { get; set; }
+        public virtual ICollection<CteCatTipoNota> CteCatTipoNota { get; set; }
         public virtual ICollection<CteCatUsuario> CteCatUsuarios { get; set; }
         public virtual ICollection<CteFichaIdentificacionResidente> CteFichaIdentificacionResidentes { get; set; }
     }

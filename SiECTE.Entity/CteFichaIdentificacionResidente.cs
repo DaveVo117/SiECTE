@@ -20,6 +20,7 @@ namespace SiECTE.Entity
         public string? TxtFotografia { get; set; }
         public string? TxtUrlFotografia { get; set; }
         public DateTime? FechaIngreso { get; set; }
+        public int? UsuarioIngreso { get; set; }
         public string? DependenciaEmite { get; set; }
         public decimal? UltimaCuota { get; set; }
         public string? Religion { get; set; }
