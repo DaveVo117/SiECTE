@@ -87,7 +87,7 @@ namespace SiECTE.AplicacionWeb.Utilidades.Automapper
 
             #endregion
 
-            #region PRODUCTO
+            #region RESIDENTE
 
             CreateMap<CteFichaIdentificacionResidente, VMResidente>()
                 .ForMember(destino =>
@@ -126,11 +126,20 @@ namespace SiECTE.AplicacionWeb.Utilidades.Automapper
 
             #endregion
 
-            #region TIPODOCUMENTOVENTA
+            #region DOCUMENTO
 
-            //CreateMap<TipoDocumentoVenta, VMTipoDocumentoVenta>().ReverseMap();
+            CreateMap<CteCtrlDocumentoIngresoResidente, VMNotaResidente>().ReverseMap();
+            CreateMap<CteCatDocumentoIngreso, VMCatDocumento>().ReverseMap();
 
             #endregion
+
+            #region NOTA
+
+            CreateMap<CteCtrlNotaResidente, VMNotaResidente>().ReverseMap();
+            CreateMap<CteCatTipoNota, VMTipoNota>().ReverseMap();
+
+            #endregion
+
 
             #region VENTA
 

@@ -19,12 +19,14 @@ namespace SiECTE.AplicacionWeb.Controllers
         private readonly IMapper _mapper;
         private readonly IResidenteService _ResidenteService;
         private readonly IDocumentoService _documentoService;
+        private readonly ITipoNotaService _tipoNotaService;
 
-        public ResidenteController(IMapper mapper, IResidenteService ResidenteService, IDocumentoService DocumentoService)//Constructor
+        public ResidenteController(IMapper mapper, IResidenteService ResidenteService, IDocumentoService DocumentoService, ITipoNotaService TipoNotaService)//Constructor
         {
             _mapper = mapper;
             _ResidenteService = ResidenteService;
             _documentoService = DocumentoService;
+            _tipoNotaService = TipoNotaService;
         }
 
 
@@ -55,6 +57,26 @@ namespace SiECTE.AplicacionWeb.Controllers
             List<VMDocumento> vmListaDocumentos = _mapper.Map<List<VMDocumento>>(await _documentoService.Lista());
 
             return StatusCode(StatusCodes.Status200OK, new { data = vmListaDocumentos });
+        }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> ListaCatDocumentos()
+        {
+            List<VMCatDocumento> vmListaDocumentos = _mapper.Map<List<VMCatDocumento>>(await _documentoService.CatLista());
+
+            return StatusCode(StatusCodes.Status200OK, vmListaDocumentos );
+        }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> ListaTipoNotas()
+        {
+            List<VMTipoNota> vmListaNotas = _mapper.Map<List<VMTipoNota>>(await _tipoNotaService.Lista());
+
+            return StatusCode(StatusCodes.Status200OK, vmListaNotas);
         }
 
 

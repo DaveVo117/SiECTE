@@ -24,7 +24,7 @@ namespace SiECTE.DAL.DBContext
         public virtual DbSet<CteCatEstatus> CteCatEstatuse { get; set; } = null!;
         public virtual DbSet<CteCatIdentificacionResidente> CteCatIdentificacionResidente { get; set; } = null!;
         public virtual DbSet<CteCatPension> CteCatPension { get; set; } = null!;
-        public virtual DbSet<CteCatRol> CteCatRols { get; set; } = null!;
+        public virtual DbSet<CteCatRol> CteCatRol { get; set; } = null!;
         public virtual DbSet<CteCatServicioSalud> CteCatServicioSalud { get; set; } = null!;
         public virtual DbSet<CteCatTipoNota> CteCatTipoNota { get; set; } = null!;
         public virtual DbSet<CteCatUsuario> CteCatUsuario { get; set; } = null!;

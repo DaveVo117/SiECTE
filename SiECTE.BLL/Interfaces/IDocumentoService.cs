@@ -10,7 +10,8 @@ namespace SiECTE.BLL.Interfaces
     public interface IDocumentoService
     {
 
-        Task<List<CteCatDocumentoIngreso>> Lista();
+        Task<List<CteCtrlDocumentoIngresoResidente>> Lista();
+        Task<List<CteCatDocumentoIngreso>> CatLista();
         Task<CteCatDocumentoIngreso> Crear(CteCatDocumentoIngreso entidad);
         Task<CteCatDocumentoIngreso> Editar(CteCatDocumentoIngreso entidad);
         Task<bool> Eliminar(int idDocumento);

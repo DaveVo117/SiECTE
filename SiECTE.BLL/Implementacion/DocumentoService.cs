@@ -22,11 +22,23 @@ namespace SiECTE.BLL.Implementacion
 
         /*METODOS*/
     
-        public async Task<List<CteCatDocumentoIngreso>> Lista()
+        public async Task<List<CteCtrlDocumentoIngresoResidente>> Lista()
+        {
+            //IQueryable<CteCtrlDocumentoIngresoResidente> query = await _repositorio.Consultar();
+
+            return null;
+        }
+
+
+
+
+        public async Task<List<CteCatDocumentoIngreso>> CatLista()
         {
             IQueryable<CteCatDocumentoIngreso> query = await _repositorio.Consultar();
             return query.ToList();
         }
+
+
 
 
         public async Task<CteCatDocumentoIngreso> Crear(CteCatDocumentoIngreso entidad)
@@ -46,7 +58,9 @@ namespace SiECTE.BLL.Implementacion
                 throw;
             }
         }
-    
+
+
+
 
         public async Task<CteCatDocumentoIngreso> Editar(CteCatDocumentoIngreso entidad)
         {

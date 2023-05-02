@@ -53,6 +53,8 @@ namespace SiECTE.IOC
             Services.AddScoped<IHistorialIngresoService, HistorialIngresoService>();
             //Servicio de DashBoard
             Services.AddScoped<IDashBoardService, DashBoardService>();
+            //Servicio de CatTipoNota
+            Services.AddScoped<ITipoNotaService, TipoNotaService>();
         }
 
 

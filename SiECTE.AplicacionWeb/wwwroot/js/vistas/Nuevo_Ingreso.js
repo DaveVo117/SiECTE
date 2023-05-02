@@ -7,22 +7,64 @@ $(document).ready(function () {
 
     $("#txtFechaIngreso").datepicker({ dateFormat: "dd/mm/yy" })
 
-    fetch('/Residente/ObtenerDocumentos')
+    fetch('/Residente/ListaCatDocumentos')
         .then(response => response.json())
         .then(data => {
             const checkboxContainer = document.getElementById('checkbox-container');
             data.forEach(item => {
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
+                checkbox.classList.add('checkbox-with-padding');
                 checkbox.name = item.txtDocumentoIngreso; // aquí puedes poner el nombre del item como quieras
-                checkbox.value = item.valor; // aquí puedes poner el valor del item como quieras
-                checkboxContainer.appendChild(checkbox);
+                checkbox.value = item.idDocumentoIngreso; // aquí puedes poner el valor del item como quieras
+                checkbox.title = item.txtDescripcion; // aquí estableces la descripción del checkbox
 
                 const label = document.createElement('label');
-                label.textContent = item.txtDocumentoIngreso; // aquí puedes poner el nombre del item como quieras
-                checkboxContainer.appendChild(label);
+                label.classList.add('label-block');
+                label.appendChild(checkbox);
+                label.appendChild(document.createTextNode(item.txtDocumentoIngreso));
+
+                const div = document.createElement('div');
+                div.appendChild(label);
+
+                checkboxContainer.appendChild(div);
             });
         });
+
+
+
+    //Acordeon
+    //Acordeon
+    //fetch('/Residente/ListaTipoNotas')
+    //    .then(response => response.json())
+    //    .then(data => {
+    //        const accordion = document.getElementById('accordion');
+    //        data.forEach(item => {
+    //            const sectionHeader = document.createElement('h3');
+    //            sectionHeader.textContent = item.txtTipoNota;
+
+    //            const sectionContent = document.createElement('div');
+
+    //            const section = document.createElement('div');
+    //            section.appendChild(sectionHeader);
+    //            section.appendChild(sectionContent);
+
+    //            const txtNota = document.createElement('input');
+    //            txtNota.setAttribute("type", "text");
+    //            txtNota.setAttribute("id", "txtNota");
+    //            sectionContent.appendChild(txtNota);
+
+    //            accordion.appendChild(section);
+    //        });
+
+    //        $("#accordion").accordion();
+    //    });
+
+
+
+
+
+
 
 })
 
