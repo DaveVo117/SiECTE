@@ -10517,9 +10517,9 @@ a:focus {
   z-index: 1;
 }
 
-.sidebar .sidebar-brand .sidebar-brand-icon i {
-  font-size: 2rem;
-}
+    .sidebar .sidebar-brand .sidebar-brand-icon i {
+        font-size: 2rem;
+    }
 
 .sidebar .sidebar-brand .sidebar-brand-text {
   display: none;
@@ -10563,10 +10563,10 @@ a:focus {
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.5);
 }
-
+/*ancho de barra sin colpsar*/
 @media (min-width: 768px) {
   .sidebar {
-    width: 14rem !important;
+    width: 12rem !important;
   }
   .sidebar .nav-item .collapse {
     position: relative;
@@ -10672,7 +10672,7 @@ a:focus {
     display: none;
   }
   .sidebar.toggled .sidebar-brand .sidebar-brand-icon i {
-    font-size: 2rem;
+    font-size: 2rem; 
   }
   .sidebar.toggled .sidebar-brand .sidebar-brand-text {
     display: none;

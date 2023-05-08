@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace SiECTE.AplicacionWeb.Utilidades.ViewComponents

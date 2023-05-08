@@ -5,7 +5,8 @@ $(document).ready(function () {
 
     $.datepicker.setDefaults($.datepicker.regional["es"])
 
-    $("#txtFechaIngreso").datepicker({ dateFormat: "dd/mm/yy" })
+    $("#txtFechaIngreso").datepicker({ dateFormat: "dd/mm/yy" });
+    $("#txtFechaNacimientoB").datepicker({ dateFormat: "dd/mm/yy" });
 
     fetch('/Residente/ListaCatDocumentos')
         .then(response => response.json())
@@ -69,6 +70,78 @@ $(document).ready(function () {
 })
 
 { dateFormat: "dd/mm/yy" }
+
+
+
+
+
+let tablaData;
+
+$("#btnBuscarB").click(function () {
+
+    tablaData = $('#tbdata').DataTable({
+        responsive: true,
+        "ajax": {
+            "url": `/SIEB/SiebBusquedaIdBeneficiario?id="${txtBIDBeneficiario.value}"`, /*Para obtener la URL se ejecuta el proyecto*/
+            "type": "GET",
+            "datatype": "json"
+        },
+        "columns": [
+            { "data": "id", "visible": false, "searchable": false },
+            { "data": "nombreCompleto" },
+            { "data": "txtCorreo" },
+            { "data": "txtTelefono" },
+            { "data": "txtRol" },
+            {
+                "data": "fechaAlta", render: function (data) {
+                    var fecha = new Date(data);
+                    var dia = ("0" + fecha.getDate()).slice(-2);
+                    var mes = ("0" + (fecha.getMonth() + 1)).slice(-2);
+                    var anio = fecha.getFullYear().toString().substr(-2);
+                    return dia + "/" + mes + "/" + anio;
+                }
+            },
+            {
+                "data": "snActivo", render: function (data) {
+                    if (data == 1)
+                        return '<pan class="badge badge-info">Activo </span>';
+                    else
+                        return '<pan class="badge badge-danger">No Activo </span>';
+
+                }
+            },
+            {
+                "defaultContent": '<button class="btn btn-primary btn-editar btn-sm mr-2"><i class="fas fa-pencil-alt"></i></button>' +
+                    '<button class="btn btn-danger btn-eliminar btn-sm"><i class="fas fa-trash-alt"></i></button>',
+                "orderable": false,
+                "searchable": false,
+                "width": "80px"
+            }
+        ],
+        order: [[0, "desc"]],
+        dom: "Bfrtip",
+        buttons: [
+            {
+                text: 'Exportar Excel',
+                extend: 'excelHtml5',
+                title: '',
+                filename: 'Reporte Usuarios',
+                exportOptions: {
+                    columns: [2, 3, 4, 5, 6] //especificar columnas que se descargarán inicia en 0
+                }
+            }, 'pageLength'
+        ],
+        language: {
+            url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        },
+    });
+
+
+})
+
+
+
+
 
 //$JQuery, id de tabla de la vista Index
 //$(document).ready(function () {

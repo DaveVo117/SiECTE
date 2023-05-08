@@ -34,6 +34,7 @@ namespace SiECTE.AplicacionWeb.Controllers
             }
 
             return View();
+
         }
 
 

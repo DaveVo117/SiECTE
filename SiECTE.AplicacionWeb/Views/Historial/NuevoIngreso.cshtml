@@ -21,9 +21,9 @@
         });
     </script>
     <script>
-    //    $(function () {
-    //        $("#accordion").accordion();
-    //    });
+        $(function () {
+            $("#accordion").accordion();
+        });
     //</script>
 
     @*hace responsivo el select de busqueda de Residente:*@
@@ -60,6 +60,12 @@
         input[type="checkbox"]:checked {
             background-color: #9c223c !important;
         }
+
+/*        form label{
+            font-weight:600;/
+            color: black;
+                }*/ 
+
 /*        .input-group-text{
             width: 132px;
         }*/
@@ -70,6 +76,7 @@
 }
 
 
+@*BUSQUEDA DE BENEFICIARIO*@
 <div class="row">
     <div class="col-sm-12">
         <div class="row">
@@ -81,9 +88,6 @@
                     <div class="card-body">
                         <div class="form-row">
                             <div class="form-group col-sm-3">
-                                <input type="text" class="form-control form-control-sm" id="txtBIDBeneficiario" style="text-align:center" placeholder="Numero Beneficiario">
-                            </div>
-                            <div class="form-group col-sm-3">
                                 <input type="text" class="form-control form-control-sm" id="txtBNombreB" style="text-align:center" placeholder="Nombre">
                             </div>
                             <div class="form-group col-sm-3">
@@ -93,23 +97,32 @@
                                 <input type="text" class="form-control form-control-sm" id="txtBBSegundoApellidoB" style="text-align:center" placeholder="Segundo Apellido">
                             </div>
                             <div class="form-group col-sm-3 busqueda-fecha">
-                                <input type="text" class="form-control form-control-sm" id="txtBFechaNacimiento" style="text-align:center" placeholder="Fecha Nacimiento">
+                                <input type="text" class="form-control form-control-sm" id="txtFechaNacimientoB" style="text-align:center" placeholder="Fecha Nacimiento">
                             </div>
-                            <div class="form-group col-sm-3">
-                                <input type="text" class="form-control form-control-sm" id="txtBCURP" style="text-align:center" placeholder="CURP">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control form-control-sm" id="txtCURPB" style="text-align:center" placeholder="CURP">
                             </div>
-                            <div class="form-group col-sm-3">
-                                <button type="button" class="btn btn-primary btn-block btn-sm" id="btnBuscar"><i class="fas fa-search"></i> Buscar</button>
+                            <div class="form-group col-sm-2">
+                                <input type="text" class="form-control form-control-sm" id="txtBIDBeneficiario" style="text-align:center" placeholder="Numero Beneficiario">
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <button type="button" class="btn btn-primary btn-block btn-sm" id="btnBuscarB"><i class="fas fa-search"></i> Buscar</button>
+                            </div>
+                            <div class="form-group col-sm-2">
+                              <button type="button" class="btn btn-success btn-block btn-sm" id="btnLimpiarB"><i class="fas fa-backspace"></i> Limpiar</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card-body">
                         <hr />
+
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-sm-12">
                                             <fieldset class="col-sm-12" style="background-color: #FFF5FF; border-radius:10px;">
-                                                <legend class="scheduler-border" style="background-color: #FFD6DD">Beneficiarios encontrados</legend>
+                                    <legend class="scheduler-border" style="background-color: #FFD6DD">Beneficiarios encontrados</legend>
                                 <table class="table table-bordered" id="tbdata" cellspacing="0" style="width:100%" >
                                     <thead>
                                         <tr>
@@ -127,6 +140,7 @@
                                     <tbody>
                                     </tbody>
                                 </table>
+                                </fieldset>
                             </div>
                         </div>
                             <br />
@@ -135,6 +149,32 @@
                                 <button class="btn btn-success  " id="btnNuevoB"><i class="fas fa-plus-circle"></i> Nuevo Beneficiario</button>
                             </div>
                         </div>
+
+@*                        <div class="row">
+                            <div class="col-sm-12">
+                                <fieldset class="col-sm-12" style="background-color: #e9f9ff; border-radius:10px;">
+                                    <legend class="scheduler-border" style="background-color: lightskyblue">Solicitantes encontrados</legend>
+                                <table class="table table-bordered" id="tbdata" cellspacing="0" style="width:100%" >
+                                    <thead>
+                                        <tr>
+                                                <p class="md-5">Seleccione a un beneficiario para consultar sus datos.</p></>
+                                        </tr>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nombre</th>
+                                            <th>Primer Apellido</th>
+                                            <th>Segundo Apellido</th>
+                                            <th>Fecha Nacimiento</th>
+                                            <th>CURP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                </fieldset>
+                            </div>
+                        </div>*@
+
                     </div>
 
                 </div>
@@ -194,8 +234,8 @@
 
 
 
-@*FICHA*@
-    <div class="row">
+@*FICHA IDENTIFICACION*@
+    <div class="row" id="fichaIdentificacion">
         <div class="col-sm-8">
 <form>
         <div class="row">
@@ -210,7 +250,7 @@
                                     <img id="imgFoto" src="data:image/jpeg;base64,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" class="rounded mx-auto d-block" style="width: 160px; height: 200px;">
                                 </div>
                                 <div class="form-group col-sm-3">
-                                    <span>@*ViewData["IdBeneficiario"]*@Beneficiario No.<h3> 892</h3> </span>
+                                    <span>@*ViewData["IdBeneficiario"]*@Beneficiario No.<h3> 54892</h3> </span>
                                 </div>
                                 <div class="form-group col-sm-3">
                                     <span>@*ViewData["Idresidente"]*@Ficha:<h3> 00456</h3></span>
@@ -218,8 +258,8 @@
                             </div>
                             <br />
                         <div class="form-row">
-                                    <div class="form-group col-sm-4">
-                                <label for="txtNombreFicha">Nombre(s)</label>
+                            <div class="form-group col-sm-4">
+                                    <label class="form-label" for="txtNombreFicha">Nombre(s)</label>
                                 <input type="text" class="form-control form-control-sm input-validar" id="txtNombreFicha" name="NombreFicha">
                             </div>
                              <div class="form-group col-sm-4">
@@ -233,6 +273,133 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-sm-3">
+                                <label for="txtFechaNacimiento">Fecha Nacimiento</label>
+                                <input style="text-align:center;" type="text" class="form-control form-control-sm input-validar" id="txtFechaNacimiento" name="FechaNacimiento">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="txtCURP">CURP</label>
+                                <input type="text" class="form-control form-control-sm input-validar" id="txtCURP" name="CURP">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label for="btnValidarCURP">&ensp;</label>
+                                <button type="button" class="btn btn-outline-danger btn-block btn-sm" id="btnValidarCURP"><i class="fas fa-check"></i> Validar CURP</button>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-3">
+                                <label for="cboEstadoCivil">Estado Civil</label>
+                                <select class="form-control form-control-sm" id="cboEstadoCivil">
+                                    <option value="1">Soltero</option>
+                                    <option value="2">Casado</option>
+                                    <option value="3">Divorciado</option>
+                                    <option value="4">Viudo</option>
+                                    <option value="5">Separado</option>
+                                    <option value="6">Unión de hecho</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label for="cboTipoIdentificacion">Tipo Identificación</label>
+                                    <select class="form-control form-control-sm" id="cboTipoIdentificacion">
+                                    <option value="1">INE</option>
+                                    <option value="2">Licencia de Conducir</option>
+                                    <option value="3">Cartilla Militar</option>
+                                    <option value="4">Pâsaporte</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                 <label for="txtRFC">RFC</label>
+                                    <input type="text" class="form-control form-control-sm input-validar" id="txtRFC" name="RFC">
+                            </div>
+                        </div>
+
+                        <hr style ="border-style:solid; border-width:thin;"  />
+
+                            @*<div class="form-row col-sm-12"><h6 class="m-0 font-weight-bold text-black">Domicilio</h6></div>*@
+                        <div class="form-row">
+                                <div class="form-group col-sm-4">
+                                    <label for="cboEstado">Estado</label>
+                                    <select class="form-control form-control-sm" id="cboEstado">
+                                        <option value="1">Hidalgo</option>
+                                        <option value="2">Aguascalientes</option>
+                                        <option value="3">Baja California Norte</option>
+                                        <option value="4">Baja California Sur</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="cboMunicipio">Municipio</label>
+                                    <select class="form-control form-control-sm" id="cboMunicipio">
+                                        <option value="1">Acatlan</option>
+                                        <option value="2">Apan</option>
+                                        <option value="3">Actopan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="cboLocalidad">Localidad</label>
+                                    <select class="form-control form-control-sm" id="cboLocalidad">
+                                        <option value="1">Acatlan</option>
+                                        <option value="2">Apan</option>
+                                        <option value="3">Actopan</option>
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label for="cboTipoAsentamiento">Tipo de Asentamiento</label>
+                                <select class="form-control form-control-sm" id="cboTipoAsentamiento">
+                                    <option value="1">Aeropuerto</option>
+                                    <option value="2">Ampliación</option>
+                                    <option value="3">Barrio</option>
+                                    <option value="4">Cantón</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <label for="txtNombreAsentamiento">Nombre de Asentamiento</label>
+                                <input type="text" class="form-control form-control-sm input-validar" id="txtNombreAsentamiento" name="NombreAsentamiento">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label for="cboTipoVialidad">Tipo de Vialidad</label>
+                                    <select class="form-control form-control-sm" id="cboTipoVialidad">
+                                    <option value="1">Calle</option>
+                                    <option value="2">Avenida</option>
+                                    <option value="3">Andador</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <label for="txtNombreVialidad">Nombre de Vialidad</label>
+                                <input type="text" class="form-control form-control-sm input-validar" id="txtNombreVialidad" name="NombreVialidad">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group col-sm-2">
+                                    <label for="txtCP">Código Postal</label>
+                                    <input type="text" class="form-control form-control-sm input-validar" id="txtCP" name="CP">
+                                </div>
+                                <div class="form-group col-sm-2">
+                                    <label for="txtNumeroInterior">No. Interior</label>
+                                    <input type="text" class="form-control form-control-sm input-validar" id="txtNumeroInterior" name="NumeroInterior">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="txtEntreCalle">Entre Calle</label>
+                                    <input type="text" class="form-control form-control-sm input-validar" id="txtEntreCalle" name="EntreCalle">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="txtYCalle"> y Calle</label>
+                                    <input type="text" class="form-control form-control-sm input-validar" id="txtYCalle" name="YCalle">
+                                </div>
+                        </div>
+                        <div class="form-row">
+                                <div class="form-group col-sm-12">
+                                    <label for="txtDescripcionDomicilio">Descripción del Domicilio</label>
+                                    <textarea type="text" class="form-control form-control-sm input-validar" id="txtDescripcionDomicilio" name="Religion" style="width:100%;height:4rem;"></textarea>
+                                </div>
+                        </div>
+                            <hr style="border-style:solid; border-width:thin;"/>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-3">
                                 <label for="txtFechaIngreso">Fecha Ingreso</label>
                                 <input style="text-align:center;" type="text" class="form-control form-control-sm input-validar" id="txtFechaIngreso" name="FechaIngreso">
                             </div>
@@ -240,17 +407,6 @@
                                 <label for="txtUltimaCuota">Ultima Cuota</label>
                                         <input type="text" class="form-control form-control-sm input-validar" id="txtUltimaCuota" name="UltimaCuota">
                             </div>
-                                <div class="form-group col-sm-3">
-                                    <label for="cboEstadoCivil">Estado Civil</label>
-                                    <select class="form-control form-control-sm" id="cboEstadoCivil">
-                                        <option value="1">Soltero</option>
-                                        <option value="2">Casado</option>
-                                        <option value="3">Divorciado</option>
-                                        <option value="4">Viudo</option>
-                                        <option value="5">Separado</option>
-                                        <option value="6">Unión de hecho</option>
-                                    </select>
-                                </div>
                                 <div class="form-group col-sm-3">
                                     <label for="cboEscolaridad">Escolaridad</label>
                                     <select class="form-control form-control-sm" id="cboEscolaridad">
@@ -265,35 +421,47 @@
                                 </div>
                         </div>
                         <div class="form-row">
-                                <div class="form-group col-sm-2">
+                                <div class="form-group col-sm-1">
                                     <label for="txtEdad">Edad</label>
-                                    <input style="text-align:left;" type="number" value="60" class="form-control form-control-sm input-validar" id="txtEdad" name="Edad">
+                                    <input style="text-align:center;" type="text" value="60" class="form-control form-control-sm input-validar" id="txtEdad" name="Edad" readonly="readonly">
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="txtReligion">Religion</label>
                                     <input type="text" class="form-control form-control-sm input-validar" id="txtReligion" name="Religion">
                                 </div>
-                                <div class="form-group col-sm-6">
+                                <div class="form-group col-sm-7">
                                     <label for="txtDependencia">Dependencia que lo emite</label>
                                     <input type="text" class="form-control form-control-sm input-validar" id="txtDependencia" name="Dependencia">
                                 </div>
                         </div>
                         <div class="form-row">
-                                <div class="form-group col-sm-8">
-                                    <label for="txtFoto">Foto</label>
-                                    <input class="form-control-file" type="file" id="txtFoto" />
+                                <div class="form-group col-sm-4">
+                                    <label for="cboServicioSalud">Servicio de Salud</label>
+                                    <select class="form-control form-control-sm" id="cboServicioSalud">
+
+                                    </select>
                                 </div>
-                            <div class="form-group col-sm-4">
-                                <label for="cboEstadoFicha">Estado</label>
-                                    <select class="form-control form-control-sm" id="cboEstadoFicha">
-                                    <option value="1">Activo</option>
-                                    <option value="0">No Activo</option>
-                                </select>
-                            </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="cboPension">Pensión / Apoyo 65 y mas</label>
+                                    <select class="form-control form-control-sm" id="cboPension">
+                                        <option value="0">No</option>
+                                        <option value="1">Si</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="cboEstatus">Estado</label>
+                                    <select class="form-control form-control-sm" id="cboEstatus">
+                                    </select>
+                                </div>
                         </div>
                         <div class="form-row">
+                                <div class="form-group col-sm-12">
+                                    <label for="txtFoto">Foto</label>
+                                    <input class="form-control-file" type="file" id="txtFoto" style="border:initial; border-color:black;" />
+                                </div>
 
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -302,7 +470,7 @@
 
 
 
-@*NOTAS*@
+@*notas*@
 
         <form>
             <div class="row">
@@ -313,23 +481,9 @@
                         </div>
                         <div class="card-body">
                             <div class="form-row">
-                                <div id="accordion">
-                                    <h3>Section 1</h3>
-                                    <div>
-                                        <input type="text" />
-                                    </div>
-                                    <h3>Section 2</h3>
-                                    <div>
-                                        <input type="text" />
-                                    </div>
-                                    <h3>Section 3</h3>
-                                    <div>
-                                        <input type="text" />
-                                    </div>
-                                    <h3>Section 4</h3>
-                                    <div>
-                                        <input type="text" />
-                                    </div>
+                                <div class="form-group col-sm-12">
+                                    <label >Nota de Trabajo Social</label>
+                                    <textarea type="text" class="form-control form-control-sm input-validar" id="txNotaTS" name="Religion" style="width:100%;height:10rem;"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -399,9 +553,9 @@
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="cboTipoIdentificacionR1">Tipo Identificación:</label>
+                                            <label class="input-group-text" for="cboTipoIdentificacionR1">Identificación:</label>
                                         </div>
-                                        <select class="custom-select" id="cboTipoIdentificacionR1">
+                                    <select class="form-control form-control-sm" id="cboTipoIdentificacionR1">
                                         </select>
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
@@ -464,9 +618,9 @@
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="cboTipoIdentificacionR2">Tipo Identificación:</label>
+                                            <label class="input-group-text" for="cboTipoIdentificacionR2">Identificación:</label>
                                         </div>
-                                        <select class="custom-select" id="cboTipoIdentificacionR2">
+                                    <select class="form-control form-control-sm" id="cboTipoIdentificacionR2">
                                         </select>
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
@@ -530,9 +684,9 @@
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="cboTipoIdentificacionR3">Tipo Identificación:</label>
+                                            <label class="input-group-text" for="cboTipoIdentificacionR3">Identificación:</label>
                                         </div>
-                                        <select class="custom-select" id="cboTipoIdentificacionR3">
+                                    <select class="form-control form-control-sm" id="cboTipoIdentificacionR3">
                                         </select>
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
@@ -584,7 +738,7 @@
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="form-group mb-0">
-                                <button class="btn btn-success btn-sm btn-block" id="btnTerminarIngreso">Terminar Ingreso</button>
+                            <button class="btn btn-success btn-sm btn-block" id="btnGuardararFicha" style="height:3rem; font-size:medium; font-weight:700"><h6 class="m-0 font-weight-bold text-white"><i class="fa fa-save" aria-hidden="true"></i>&ensp;Guardar Ficha</h6></button>
                             </div>
                         </div>
                     </div>
@@ -620,21 +774,3 @@
 }
 
 
-<div id="accordion">
-    <h3>Section 1</h3>
-    <div>
-<input type="text" />
-    </div>
-    <h3>Section 2</h3>
-    <div>
-        <input type="text" />
-    </div>
-    <h3>Section 3</h3>
-    <div>
-        <input type="text" />
-    </div>
-    <h3>Section 4</h3>
-    <div>
-        <input type="text" />
-    </div>
-</div>
